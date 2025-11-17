@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UrFlexSheet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="menu">
+            <div class="menu__top">
+                <div class="logo-area">
+                    <!-- Logo Space - Replace with your logo -->
+                    <div class="logo">
+                        <img src="./img/logo.png" alt="Sheets Pro" class="logo-img" />
+                        <span class="logo-text">UrFlexSheet</span>
+                    </div>
+                </div>
+                <div class="menu__file">
+                    <div class="menu__title">
+                        <input value="Untitled Spreadsheet" type="text" id="menu__title-input" />
+                    </div>
+                    <div class="menu__filemenu">
+                        <div class="menu__new">New</div>
+                        <div class="menu__open">Open</div>
+                        <div class="menu__save">Save</div>
+                        
+                        <!-- Enhanced Data Menu -->
+                        <div class="menu__data">
+                            Data
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item" data-action="sort-asc">
+                                    <i class="fas fa-sort-alpha-down"></i> Sort A → Z
+                                </div>
+                                <div class="dropdown-item" data-action="sort-desc">
+                                    <i class="fas fa-sort-alpha-down-alt"></i> Sort Z → A
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item" data-action="filter">
+                                    <i class="fas fa-filter"></i> Filter
+                                </div>
+                                <div class="dropdown-item" data-action="clear-filter">
+                                    <i class="fas fa-times-circle"></i> Clear Filter
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Enhanced View Menu -->
+                        <div class="menu__view">
+                            View
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item" data-action="freeze-rows">
+                                    <i class="fas fa-grip-lines"></i> Freeze First Row
+                                </div>
+                                <div class="dropdown-item" data-action="freeze-columns">
+                                    <i class="fas fa-grip-lines-vertical"></i> Freeze First Column
+                                </div>
+                                <div class="dropdown-item" data-action="freeze-clear">
+                                    <i class="fas fa-times"></i> Clear Freeze
+                                </div>
+                            </div>
+                        </div>
+                        <input type="file" class="file-input" style="display: none;">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Formatting Toolbar -->
+            <div class="menu__formatting">
+                <div class="toolbar-group">
+                    <div class="menu__fontFamily">
+                        <select name="font-family" id="font">
+                            <option value="Inter" selected>Inter</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                        </select>
+                    </div>
+                    <div class="menu__fontSize">
+                        <select name="fontsize" id="fontsize">
+                            <option value="8">8</option>
+                            <option value="10">10</option>
+                            <option value="12">12</option>
+                            <option value="14">14</option>
+                            <option value="16" selected>16</option>
+                            <option value="18">18</option>
+                            <option value="20">20</option>
+                            <option value="24">24</option>
+                            <option value="28">28</option>
+                            <option value="32">32</option>
+                            <option value="36">36</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="toolbar-divider"></div>
+
+                <div class="toolbar-group">
+                    <i class="fas fa-bold menu-btn menu-btn--bold" title="Bold (Ctrl+B)"></i>
+                    <i class="fas fa-italic menu-btn menu-btn--italic" title="Italic (Ctrl+I)"></i>
+                    <i class="fas fa-underline menu-btn menu-btn--underline" title="Underline (Ctrl+U)"></i>
+                    <i class="fas fa-strikethrough menu-btn menu-btn--strikethrough" title="Strikethrough"></i>
+                </div>
+
+                <div class="toolbar-divider"></div>
+
+                <div class="toolbar-group">
+                    <div class="menu-btn--fontColor">
+                        <i class="fas fa-font menu-btn" title="Text Color"></i>
+                        <div class="menu-btn--colorDiv"></div>
+                    </div>
+                    <input type="color" class="font-color hidden" />
+                    
+                    <!-- Conditional Formatting -->
+                    <div class="conditional-formatting-wrapper">
+                        <i class="fas fa-palette menu-btn" title="Conditional Formatting"></i>
+                        <div class="dropdown-menu formatting-dropdown">
+                            <div class="dropdown-item" data-format="color-scale">
+                                <i class="fas fa-fill-drip"></i> Color Scale
+                            </div>
+                            <div class="dropdown-item" data-format="data-bars">
+                                <i class="fas fa-chart-bar"></i> Data Bars
+                            </div>
+                            <div class="dropdown-item" data-format="greater-than">
+                                <i class="fas fa-greater-than"></i> Greater Than
+                            </div>
+                            <div class="dropdown-item" data-format="less-than">
+                                <i class="fas fa-less-than"></i> Less Than
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item" data-format="clear">
+                                <i class="fas fa-broom"></i> Clear Formatting
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toolbar-divider"></div>
+
+                <div class="toolbar-group">
+                    <i class="fas fa-align-left menu-btn menu-btn--left menu-btn--active" title="Align Left"></i>
+                    <i class="fas fa-align-center menu-btn menu-btn--center" title="Align Center"></i>
+                    <i class="fas fa-align-right menu-btn menu-btn--right" title="Align Right"></i>
+                    <i class="fas fa-comment menu-btn menu-btn--comment" id="add-comment-btn" title="Add Comment"></i>
+                </div>
+
+                <div class="toolbar-divider"></div>
+
+                <div class="toolbar-group menu__actions">
+                    <i class="fas fa-undo menu-btn menu-btn--undo" title="Undo (Ctrl+Z)"></i>
+                    <i class="fas fa-redo menu-btn menu-btn--redo" title="Redo (Ctrl+Y)"></i>
+                    <i class="fas fa-copy menu-btn menu-btn--copy" title="Copy (Ctrl+C)"></i>
+                    <i class="fas fa-paste menu-btn menu-btn--paste" title="Paste (Ctrl+V)"></i>
+                    <i class="fas fa-cut menu-btn menu-btn--cut" title="Cut (Ctrl+X)"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formula Bar -->
+        <div class="formula">
+            <div class="formula__address-container">
+                <input class="formula__address-box" type="text" value="A1" readonly />
+            </div>
+            <div class="formula__input-container">
+                <i class="fas fa-function formula-icon"></i>
+                <input class="formula__formula-box" type="text" placeholder="Enter formula or value" />
+            </div>
+            <div class="formula-status">
+                <div class="status-indicator filter-status hidden" id="filter-status" title="Filter Active">
+                    <i class="fas fa-filter"></i>
+                </div>
+                <div class="status-indicator freeze-status hidden" id="freeze-status" title="Panes Frozen">
+                    <i class="fas fa-thumbtack"></i>
+                </div>
+                <div class="status-indicator shortcuts-help-btn" id="shortcuts-help-btn" title="Keyboard Shortcuts">
+                    <i class="fas fa-keyboard"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid-container">
+            <div class="grid">
+                <div class="grid__top-left-block">
+                    <div class="freeze-handle" id="freeze-handle" title="Drag to freeze panes">
+                        <i class="fas fa-grip-lines-vertical"></i>
+                    </div>
+                </div>
+                <div class="grid__top-row"></div>
+                <div class="grid__left-col"></div>
+                <div class="grid__cells-container"></div>
+                
+                <div class="freeze-overlay">
+                    <div class="freeze-pane-vertical hidden" id="freeze-pane-vertical"></div>
+                    <div class="freeze-pane-horizontal hidden" id="freeze-pane-horizontal"></div>
+                    <div class="freeze-pane-corner hidden" id="freeze-pane-corner"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sheets -->
+        <div class="sheets">
+            <div class="sheets__add-btn" id="sheets__add-btn" title="Add New Sheet">
+                <i class="fas fa-plus"></i>
+            </div>
+            <div class="sheets__list" id="sheets-list">
+                <div class="sheets__sheet sheets__sheet--active" data-sheet-id="1">
+                    <span class="sheet-name">Sheet 1</span>
+                    <div class="sheet-actions">
+                        <i class="fas fa-copy sheet-action-btn" title="Duplicate Sheet"></i>
+                        <i class="fas fa-trash sheet-action-btn" title="Delete Sheet"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="sheets__navigation">
+                <i class="fas fa-chevron-left nav-btn" id="sheet-prev" title="Previous Sheet"></i>
+                <i class="fas fa-chevron-right nav-btn" id="sheet-next" title="Next Sheet"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="comment-popup hidden" id="comment-popup">
+        <div class="comment-header">
+            <span>Add Comment</span>
+            <i class="fas fa-times comment-close" id="comment-close"></i>
+        </div>
+        <div class="comment-body">
+            <textarea class="comment-textarea" placeholder="Type your comment here..."></textarea>
+        </div>
+        <div class="comment-actions">
+            <button class="btn btn-secondary comment-cancel">Cancel</button>
+            <button class="btn btn-primary comment-save">Save Comment</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="formatting-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Conditional Formatting</h3>
+                <i class="fas fa-times modal-close" id="formatting-close"></i>
+            </div>
+            <div class="modal-body">
+                <div class="formatting-rule">
+                    <label>Format cells where:</label>
+                    <select class="rule-type">
+                        <option value="greater">Greater than</option>
+                        <option value="less">Less than</option>
+                        <option value="equal">Equal to</option>
+                    </select>
+                    <input type="text" class="rule-value" placeholder="Value">
+                </div>
+                <div class="formatting-preview">
+                    <label>Preview:</label>
+                    <div class="preview-cell">Sample Text</div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary modal-cancel">Cancel</button>
+                <button class="btn btn-primary modal-apply">Apply Formatting</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="filter-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Filter Data</h3>
+                <i class="fas fa-times modal-close" id="filter-close"></i>
+            </div>
+            <div class="modal-body">
+                <div class="filter-section">
+                    <label>Filter by:</label>
+                    <select class="filter-column">
+                        <option value="A">Column A</option>
+                        <option value="B">Column B</option>
+                        <option value="C">Column C</option>
+                    </select>
+                </div>
+                <div class="filter-options">
+                    <label>Filter condition:</label>
+                    <input type="text" class="filter-value" placeholder="Enter filter value...">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary filter-clear">Clear Filter</button>
+                <button class="btn btn-primary filter-apply">Apply Filter</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="shortcuts-modal">
+        <div class="modal shortcuts-modal">
+            <div class="modal-header">
+                <h3>Keyboard Shortcuts</h3>
+                <i class="fas fa-times modal-close" id="shortcuts-close"></i>
+            </div>
+            <div class="modal-body">
+                <div class="shortcuts-grid">
+                    <div class="shortcut-item"><span class="shortcut-keys">Ctrl + Z</span><span class="shortcut-desc">Undo</span></div>
+                    <div class="shortcut-item"><span class="shortcut-keys">Ctrl + Y</span><span class="shortcut-desc">Redo</span></div>
+                    <div class="shortcut-item"><span class="shortcut-keys">Ctrl + C</span><span class="shortcut-desc">Copy</span></div>
+                    <div class="shortcut-item"><span class="shortcut-keys">Ctrl + V</span><span class="shortcut-desc">Paste</span></div>
+                    <div class="shortcut-item"><span class="shortcut-keys">Ctrl + X</span><span class="shortcut-desc">Cut</span></div>
+                    <div class="shortcut-item"><span class="shortcut-keys">Ctrl + S</span><span class="shortcut-desc">Save</span></div>
+                    <div class="shortcut-item"><span class="shortcut-keys">Ctrl + F</span><span class="shortcut-desc">Find</span></div>
+                    <div class="shortcut-item"><span class="shortcut-keys">F2</span><span class="shortcut-desc">Edit Cell</span></div>
+                    <div class="shortcut-item"><span class="shortcut-keys">Ctrl + A</span><span class="shortcut-desc">Select All</span></div>
+                    <div class="shortcut-item"><span class="shortcut-keys">Tab</span><span class="shortcut-desc">Next Cell</span></div>
+                    <div class="shortcut-item"><span class="shortcut-keys">Shift + Tab</span><span class="shortcut-desc">Previous Cell</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scripts/domlist.js" defer></script>
+    <script src="./scripts/init.js" defer></script>
+    <script src="./scripts/database.js" defer></script>
+    <script src="./scripts/script.js" defer></script>
+    <script src="./scripts/launch.js" defer></script>
+</body>
+</html>
